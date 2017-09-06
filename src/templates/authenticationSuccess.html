@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+  Welcome {{name}}
+{% endblock %}
+{% block content %}
+  <h1>
+    Welcome {{name}}
+    <a href="/blog/newpost"><Button>✒️ New Post</Button></a>
+    <a href="/blog"><Button>Blog Home</Button></a>
+  </h1>
+{% endblock %}

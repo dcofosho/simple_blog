@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+  <form method="post">
+    <div class="row">
+      <div class="col-2">
+        <label for="username">username</label>
+      </div>
+      <div class="col-2">
+        <input type="text" name="username" id="username" value="{{username}}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <label for="password">password</label>
+      </div>
+      <div class="col-2">
+        <input type="password" name="password" id="username">
+      </div>
+    </div>
+    <div>
+      <h3>{{error}}</h3>
+    </div>
+    <input type="submit" value="Login">
+  </form>
+  <h3>New user?<a href="/signup">Signup</a></h3>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+  W3b D3v 8108
+{% endblock %}
+
+{% block content %}
+
+  
+  <a href="/logout"><button>Logout</button></a>
+  <a href="/login"><button>Login</button></a>
+  <a href="/signup"><button>Signup</button></a>
+
+  <h1>W3b D3v 8108</h1>
+  <hr>
+  <h2>+hr34d5</h2>
+  <a href="/blog/newpost"><button>➕ New Post</button></a>
+  {% for post in data %}
+    <h3>{{post.created_by}}</h3>
+    <h3>{{post.subject}}</h3>
+    <p>
+      {{post.content}}
+    </p>
+    <p>
+      Likes:{{post.liked_by|length}}
+    </p>
+    <a href="/blog/{{post.key().id()}}"><Button>👀</Button></a>
+    <a href="/blog/{{post.key().id()}}/edit"><Button>✒️</Button></a>
+    <a href="/blog/{{post.key().id()}}/delete"><Button>🗑️</Button></a>
+    <a href="/blog/{{post.key().id()}}/like"><Button>👍</Button></a>
+    <a href="/blog/{{post.key().id()}}/dislike"><Button>👎</Button></a>
+    <hr> 
+    <hr> {% for comment in comment_data %} 
+    <p>{{comment.created_by}}</p>
+    <br>
+    <p>{{comment.text}}</p>
+    
+    <a href="comment/{{comment.key().id()}}/edit">Edit</a>
+    <a href="comment/{{comment.key().id()}}/delete">Delete</a>
+    <hr> {% endfor %}
+  {% endfor %}
+{% endblock %}

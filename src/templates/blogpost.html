@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{data.subject}}
+{% endblock %}
+{% block content %}
+  <h2><a href="/blog">Blog Home</a></h2>
+  <hr>
+  <h3>{{data.created_by}}</h3>
+  <h3>{{data.subject}}</h3>
+  <p>
+    {{data.content}}
+  </p>
+  <h4>Likes:{{data.liked_by|length}}</h4>
+  <h4>Dislikes:{{data.disliked_by|length}}</h4>
+  <hr>
+  <a href="{{data.key().id()}}/edit"><Button>✒️</Button></a>
+  <a href="{{data.key().id()}}/delete"><Button>🗑️</Button></a>
+  <a href="{{data.key().id()}}/like"><Button>👍</Button></a>
+  <a href="{{data.key().id()}}/dislike"><Button>👎</Button></a>
+  <div>{{error}}</div>
+  <h2>Comments</h2>
+  <h3>Write a comment</h3>
+  <form method="post">
+    <textarea name="comment" id="comment" cols="30" rows="2"></textarea>
+    <input type="submit" value="comment">
+  </form>
+  <hr> {% for comment in comment_data %} 
+  {{comment.created_by}}
+  <br>
+  {{comment.text}}
+  <a href="comment/{{comment.key().id()}}/edit">Edit</a>
+  <a href="comment/{{comment.key().id()}}/delete">Delete</a>
+  <hr> {% endfor %}
+
+{% endblock %}
